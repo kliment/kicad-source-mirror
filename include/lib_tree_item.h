@@ -62,6 +62,7 @@ public:
      * For items with units, return an identifier for unit x.
      */
     virtual wxString GetUnitReference( int aUnit ) { return wxEmptyString; }
+    virtual wxString GetUnitDescription( int aUnit ) { return wxEmptyString; }
 };
 
 #endif //LIB_TREE_ITEM_H

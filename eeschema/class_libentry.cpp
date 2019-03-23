@@ -146,6 +146,11 @@ wxString LIB_ALIAS::GetUnitReference( int aUnit )
     return LIB_PART::SubReference( aUnit, false );
 }
 
+wxString LIB_ALIAS::GetUnitDescription( int aUnit )
+{
+    return shared->GetUnitDescription(aUnit);
+}
+
 
 const EDA_RECT LIB_ALIAS::GetBoundingBox() const
 {
@@ -341,6 +346,18 @@ wxString LIB_PART::SubReference( int aUnit, bool aAddSeparator )
     return subRef;
 }
 
+wxString LIB_PART::GetUnitDescription( int aUnit )
+{
+    wxString fieldid="_UNITDESC_";
+    fieldid<<LIB_PART::SubReference(aUnit,false);
+    LIB_FIELD* descfield=FindField(fieldid);
+    if(descfield==NULL)
+    {
+        return wxEmptyString;
+    } else {
+        return descfield->GetFullText();
+    }
+}
 
 const wxString& LIB_PART::GetName() const
 {

@@ -129,7 +129,6 @@ LIB_TREE_NODE_UNIT::LIB_TREE_NODE_UNIT( LIB_TREE_NODE* aParent, LIB_TREE_ITEM* a
 {
     static void* locale = nullptr;
     static wxString namePrefix;
-
     // Fetching translations can take a surprising amount of time when loading libraries,
     // so only do it when necessary.
     if( Pgm().GetLocale() != locale )
@@ -145,7 +144,7 @@ LIB_TREE_NODE_UNIT::LIB_TREE_NODE_UNIT( LIB_TREE_NODE* aParent, LIB_TREE_ITEM* a
     LibId = aParent->LibId;
 
     Name = namePrefix + " " + aItem->GetUnitReference( aUnit );
-    Desc = wxEmptyString;
+    Desc = aItem->GetUnitDescription( aUnit );
     MatchName = wxEmptyString;
 
     IntrinsicRank = -aUnit;

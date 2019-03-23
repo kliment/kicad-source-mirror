@@ -175,6 +175,11 @@ public:
     wxString GetUnitReference( int aUnit ) override;
 
     /**
+     * For symbols with units, return a unit description for unit x if available.
+     */
+    wxString GetUnitDescription( int aUnit ) override;
+
+    /**
      * A temporary conversion (deMorgan) designation for rendering, preview, etc.
      */
     void SetTmpConversion( int aConversion ) { tmpConversion = aConversion; }
@@ -667,6 +672,12 @@ public:
      * Note: this is a static function.
      */
     static wxString SubReference( int aUnit, bool aAddSeparator = true );
+
+     /**
+     * @return the description of this unit (if any)
+     * @param aUnit = the part identifier ( 1 to max count)
+     */
+    wxString GetUnitDescription( int aUnit);
 
     // Accessors to sub ref parameters
     static int GetSubpartIdSeparator() { return m_subpartIdSeparator; }

@@ -372,7 +372,7 @@ void LIB_EDIT_FRAME::UpdatePartSelectList()
         for( int i = 0; i < part->GetUnitCount(); i++ )
         {
             wxString sub  = LIB_PART::SubReference( i+1, false );
-            wxString unit = wxString::Format( _( "Unit %s" ), GetChars( sub ) );
+            wxString unit = wxString::Format( _( "Unit %s %s" ), GetChars( sub ), GetChars(part->GetUnitDescription(i+1)) );
             m_partSelectBox->Append( unit );
         }
     }
